@@ -1,0 +1,28 @@
+<template>
+    <template if:true={newExpense}></template>
+    <div class="slds-modal slds-fade-in-open slds-backdrop">  
+        <div class="slds-modal__container"> 
+        <div class="slds-modal__header">  
+            <h1 style="font-size: large;">New Expense Card</h1>  
+        </div>   
+        <div class="slds-modal__content slds-p-around_medium">
+            <div> 
+                <h1 style="font-weight: bold; margin-bottom: 5px;">Amount</h1>
+                <lightning-input onchange={AmountChanged} min="1" variant="label-hidden" placeholder="Amount..." style="width: 30%; height: 30px; "></lightning-input>
+            </div>
+            <div style="margin-top: 10px;">
+                <h1 style="font-weight: bold; margin-bottom: 5px;">Date</h1>
+                <lightning-input onchange={DateChanged} type="date" variant="label-hidden" placeholder="12 May 2016" style="width: 30%; "></lightning-input>
+            </div>
+            <div style="margin-top: 10px;">
+                <h1 style="font-weight: bold; margin-bottom: 5px;">Description</h1>
+                <textarea onchange={DescriptionChanged} placeholder="Placeholder Text" style="resize: none; width: 100%; height: 175px;"></textarea>
+            </div>
+        </div>  
+        <div class="slds-modal__footer">  
+            <lightning-button label="Cancel" onclick={closeModal}></lightning-button>
+            <lightning-button label="Save" variant="brand" onclick={handlerSaveExpense} style="margin-left: 5px;"></lightning-button>  
+        </div>  
+        </div>  
+    </div> 
+</template>

@@ -1,0 +1,131 @@
+<template>
+    <lightning-card>
+        <lightning-layout style="padding: 5px 20px;">
+            <lightning-layout-item class="slds-size_1-of-5">
+                <table width="200" border="1" align="center" cellpadding="4" cellspacing="0" class="customers">
+                    <tr>
+                        <td colspan="2" style="font-size: large; font-weight: bold;">
+                            <h1 style="float: left;">Regional Expenses</h1>
+                            <lightning-combobox
+                                name="years"
+                                value={shownYear}
+                                options={options}
+                                onchange={handleYearChange} 
+                                style="display: flex; float: left;" ></lightning-combobox>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td rowspan="2" style="background-color: rgba(209, 205, 205, 0.774); color: rgb(8, 8, 152); font-size: large; font-weight: bold;">
+                            Month
+                        </td>
+                        <td style="background-color: rgba(166, 194, 233, 0.774); color: red; font-size: x-large; font-weight: bold;">
+                            Balance now:
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td style="background-color: rgba(255, 254, 176, 0.868); color: red; font-size: larger; font-weight: bold;">
+                            Monthly average
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">January</td> 
+                    </tr>
+                    <tr>
+                        <td colspan="2">February</td> 
+                    </tr>
+                    <tr>
+                        <td colspan="2">March</td> 
+                    </tr>
+                    <tr>
+                        <td colspan="2">April</td> 
+                    </tr>
+                    <tr>
+                        <td colspan="2">May</td> 
+                    </tr>
+                    <tr>
+                        <td colspan="2">June</td> 
+                    </tr>
+                    <tr>
+                        <td colspan="2">July</td> 
+                    </tr>
+                    <tr>
+                        <td colspan="2">August</td> 
+                    </tr>
+                    <tr>
+                        <td colspan="2">September</td> 
+                    </tr>
+                    <tr>
+                        <td colspan="2">October</td> 
+                    </tr>
+                    <tr>
+                        <td colspan="2">November</td> 
+                    </tr>
+                    <tr>
+                        <td colspan="2">December</td> 
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="background-color: rgb(158, 158, 158); font-weight: bold;">Total:</td> 
+                    </tr>
+                </table>
+            </lightning-layout-item>
+            
+            <lightning-layout-item class="slds-size_3-of-5">
+                <lightning-layout>
+                <template for:each={offices}  for:item="of" >
+                    <lightning-layout-item key={of}>
+                    <table  width="200" align="center" cellpadding="4" cellspacing="0" class="slds-table_bordered customers slds-table_fixed-layout">
+                        <tr style="font-size: large; font-weight: bold; color: rgb(44, 112, 200); height: 49px;">
+                            <td style="text-align:center">
+                                <lightning-button variant="Base" label={of.Name} onclick={viewRecord} value={of.Id}></lightning-button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: rgba(166, 194, 233, 0.774); font-size: x-large; font-weight: bold; text-align:center;">
+                                <c-expense-admin-home-office-balance-now office={of} year={yearNumb}></c-expense-admin-home-office-balance-now>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: rgba(255, 254, 176, 0.868); height: 41px; text-align:center;">
+                                <c-expense-admin-home-office-monthly-average  year={yearNumb} office={of}></c-expense-admin-home-office-monthly-average>
+                            </td>
+                        </tr>
+                        <template for:each={months}  for:item="m">
+                            <tr key={m}>
+                                <td>   
+                                    <c-expense-admin-home-office-table  month={m} office={of} year={yearNumb}></c-expense-admin-home-office-table>
+                                </td>
+                            </tr>
+                        </template>
+                        <tr>
+                            <td style="background-color: rgb(158, 158, 158); font-weight: bold; text-align:center;">
+                                <c-expense-admin-home-office-total-months  year={yearNumb} office={of}></c-expense-admin-home-office-total-months>
+                            </td> 
+                        </tr>
+                    </table>
+                </lightning-layout-item>
+                </template>
+            </lightning-layout>
+            </lightning-layout-item>
+            
+            <lightning-layout-item class="slds-size_1-of-5" style="float: right;">
+                <table width="200" align="center" cellpadding="4" cellspacing="0" class="slds-table_bordered customers slds-table_fixed-layout">
+                    <tr style="background-color: rgba(254, 248, 140, 0.868); font-size: x-large; font-weight: bold; color: red; height: 143px;">
+                        <td>Summ</td>
+                    </tr>
+                    <template for:each={months}  for:item="m">
+                        <tr key={m} style="background-color: rgba(254, 248, 140, 0.868);">
+                            <td>   
+                                <c-expense-admin-home-summ-table  month={m} year={yearNumb}></c-expense-admin-home-summ-table>
+                            </td>
+                        </tr>
+                    </template>
+                    <tr>
+                        <td style="background-color: rgb(158, 158, 158); font-weight: bold; text-align:center;">
+                            {summTotalAmount}
+                        </td> 
+                    </tr>
+                </table>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

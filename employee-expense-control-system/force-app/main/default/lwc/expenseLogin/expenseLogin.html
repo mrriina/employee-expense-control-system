@@ -1,0 +1,21 @@
+<template>
+    <div class="slds-col slds-size_1-of-3" style="margin-left: 35%;">
+    <lightning-card style="background-color: white;">
+        <div style="padding-left: 30px; padding-right: 30px;">
+            <img src={expImg}>
+        </div>
+        <div style="padding-left: 30px; padding-right: 30px;">
+            <h1 style="font-weight: bold; margin-bottom: 5px;">Login</h1>
+            <lightning-input variant="label-hidden" placeholder="Enter your username" onchange={LoginChanged}></lightning-input>
+        </div>
+        <div style="padding-left: 30px; padding-right: 30px; margin-top: 10px;">
+            <h1 style="font-weight: bold; margin-bottom: 5px;">Password</h1>
+            <lightning-input variant="label-hidden" placeholder="Password" onchange={PasswordChanged}></lightning-input>
+        </div>
+        <div style="padding-left: 30px; padding-right: 30px; margin-top: 20px;">
+            <lightning-button variant="brand" label="Login" onclick={ClickLoginButton} class="slds-button slds-button_brand slds-button_stretch"></lightning-button>
+        </div>
+
+    </lightning-card>
+</div>
+</template>

@@ -1,0 +1,259 @@
+<template>
+    <lightning-card style="padding: 10px 30px;">
+        <div style="padding: 10px 20px;">
+            <div class="slds-media slds-media_center" style="background-color: rgb(236, 234, 234);">
+              <div class="slds-size_1-of-3" style="padding-left: 3%;">
+                <h1 style="font-size: x-large;">
+                    Expenses {office}
+                </h1>
+              </div>
+              <div class="slds-size_1-of-3 slds-media">
+                <h1 style="font-size: x-large;">
+                  Balance &nbsp;&nbsp;
+                </h1>
+                <h1 style="font-size: x-large; font-weight: bold;">
+                    $<c-expense-home-total-balance year={yearNumb}></c-expense-home-total-balance>
+                </h1>
+              </div>
+              <div style="position: absolute;  right: 0; padding-right: 3%;">
+                <lightning-button label="Income" onclick={handlerIncome} icon-name="utility:arrowdown" ></lightning-button>
+                <lightning-button label="New Expenses" onclick={handlerNewExpense}></lightning-button>
+              </div>
+            </div>
+
+        <lightning-layout> 
+            <lightning-layout-item>
+                <table class ='navigationTable'>
+                    <tr>
+                        <td>MONTHS</td>
+                        <td>Amount</td>
+                        <td>Income</td>
+                    </tr>
+                    <tr class = 'verticalNavegation' onclick={clickJanuary} data-id="idJanuary">
+                        <td data-id="january">January</td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-amount cont={cont} month='1' year={yearNumb} ></c-expense-home-monthly-amount>
+                        </td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-income cont={cont} month='1' year={yearNumb}></c-expense-home-monthly-income>
+                        </td>
+                    </tr>
+                    <tr class = 'verticalNavegation' onclick={clickFebruary} data-id="idFebruary">
+                        <td data-id="february">February</td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-amount cont={cont} month='2' year={yearNumb}></c-expense-home-monthly-amount>
+                        </td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-income cont={cont} month='2' year={yearNumb}></c-expense-home-monthly-income>
+                        </td>
+                    </tr>
+                    <tr class = 'verticalNavegation'  onclick={clickMarch} data-id="idMarch">
+                        <td>March</td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-amount cont={cont} month='3' year={yearNumb}></c-expense-home-monthly-amount>
+                        </td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-income cont={cont} month='3' year={yearNumb}></c-expense-home-monthly-income>
+                        </td>
+                    </tr>
+                    <tr class = 'verticalNavegation'  onclick={clickApril} data-id="idApril">
+                        <td>April</td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-amount cont={cont} month='4' year={yearNumb}></c-expense-home-monthly-amount>
+                        </td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-income cont={cont} month='4' year={yearNumb}></c-expense-home-monthly-income>
+                        </td>
+                    </tr>
+                    <tr class = 'verticalNavegation' onclick={clickMay} data-id="idMay">
+                        <td>May</td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-amount cont={cont} month='5' year={yearNumb}></c-expense-home-monthly-amount>
+                        </td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-income cont={cont} month='5' year={yearNumb}></c-expense-home-monthly-income>
+                        </td>
+                    </tr>
+                    <tr class = 'verticalNavegation' onclick={clickJune} data-id="idJune">
+                        <td>June</td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-amount cont={cont} month='6' year={yearNumb}></c-expense-home-monthly-amount>
+                        </td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-income cont={cont} month='6' year={yearNumb}></c-expense-home-monthly-income>
+                        </td>
+                    </tr>
+                    <tr class = 'verticalNavegation' onclick={clickJuly} data-id="idJuly">
+                        <td>July</td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-amount cont={cont} month='7' year={yearNumb}></c-expense-home-monthly-amount>
+                        </td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-income cont={cont} month='7' year={yearNumb}></c-expense-home-monthly-income>
+                        </td>
+                    </tr>
+                    <tr class = 'verticalNavegation' onclick={clickAugust} data-id="idAugust">
+                        <td>August</td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-amount cont={cont} month='8' year={yearNumb}></c-expense-home-monthly-amount>
+                        </td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-income cont={cont} month='8' year={yearNumb}></c-expense-home-monthly-income>
+                        </td>
+                    </tr>
+                    <tr class = 'verticalNavegation' onclick={clickSeptember} data-id="idSeptember">
+                        <td>September</td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-amount cont={cont} month='9' year={yearNumb}></c-expense-home-monthly-amount>
+                        </td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-income cont={cont} month='9' year={yearNumb}></c-expense-home-monthly-income>
+                        </td>
+                    </tr>
+                    <tr class = 'verticalNavegation' onclick={clickOctober} data-id="idOctober">
+                        <td>October</td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-amount cont={cont} month='10' year={yearNumb}></c-expense-home-monthly-amount>
+                        </td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-income cont={cont} month='10' year={yearNumb}></c-expense-home-monthly-income>
+                        </td>
+                    </tr>
+                    <tr class = 'verticalNavegation' onclick={clickNovember} data-id="idNovember">
+                        <td>November</td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-amount cont={cont} month='11' year={yearNumb}></c-expense-home-monthly-amount>
+                        </td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-income cont={cont} month='11' year={yearNumb}></c-expense-home-monthly-income>
+                        </td>
+                    </tr>
+                    <tr class = 'verticalNavegation' onclick={clickDecember} data-id="idDecember">
+                        <td>December</td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-amount cont={cont} month='12' year={yearNumb}></c-expense-home-monthly-amount>
+                        </td>
+                        <td if:true={cont}>
+                            <c-expense-home-monthly-income cont={cont} month='12' year={yearNumb}></c-expense-home-monthly-income>
+                        </td>
+                    </tr> 
+                </table>
+                <table>
+                    <tr class="total">
+                        <td>total</td>
+                        <td>
+                            <c-expense-home-total-amount year={yearNumb}></c-expense-home-total-amount>
+                        </td>
+                        <td>
+                            <c-expense-home-total-income year={yearNumb}></c-expense-home-total-income>
+                        </td>
+                    </tr>
+                </table>
+                    <lightning-radio-group name="radioGroup"
+                            label="Years"
+                            options={options}
+                            value={value}
+                            onchange={handleValueIntercept}
+                            type="button"></lightning-radio-group>
+            </lightning-layout-item>
+
+            <lightning-layout-item>     
+                <template if:true={januaryValue}> 
+                    <div class="slds-scrollable slds-var-m-around_medium">                     
+                        <lightning-accordion onsectiontoggle={handleToggleSection}>
+                            <template for:each={monthExp}  for:item="me" class="slds-size_2-of-3">
+                                <c-expense-home-child key={me.Id} me={me} onrefreshamount={handleRefreshAmount}></c-expense-home-child>
+                            </template>
+                        </lightning-accordion>
+                    </div>
+                </template>
+                <template if:true={februaryValue}>
+                    <lightning-accordion onsectiontoggle={handleToggleSection}>
+                        <template for:each={monthExp}  for:item="me">
+                            <c-expense-home-child key={me.Id} me={me} class="slds-size_2-of-3" onrefreshamount={handleRefreshAmount}></c-expense-home-child> 
+                        </template>
+                    </lightning-accordion>
+                </template>
+                <template if:true={marchValue}>
+                    <lightning-accordion onsectiontoggle={handleToggleSection}>
+                        <template for:each={monthExp}  for:item="me">
+                            <c-expense-home-child key={me.Id} me={me} class="slds-size_2-of-3" onrefreshamount={handleRefreshAmount}></c-expense-home-child>
+                        </template>
+                    </lightning-accordion>
+                </template>
+                <template if:true={aprilValue}>
+                    <div class="slds-scrollable" style="height: 70%; width: 100%; border-bottom: 1px solid rgb(236, 234, 234);">
+                    <lightning-accordion onsectiontoggle={handleToggleSection}>
+                        <template for:each={monthExp}  for:item="me">
+                            <c-expense-home-child key={me.Id} me={me} class="slds-size_2-of-3" onrefreshamount={handleRefreshAmount}></c-expense-home-child>
+                        </template>
+                    </lightning-accordion>
+                    </div>
+                </template>
+                <template if:true={mayValue}>
+                    <lightning-accordion onsectiontoggle={handleToggleSection}>
+                        <template for:each={monthExp}  for:item="me">
+                            <c-expense-home-child key={me.Id} me={me} class="slds-size_2-of-3" onrefreshamount={handleRefreshAmount}></c-expense-home-child>
+                        </template>
+                    </lightning-accordion>
+                </template>
+                <template if:true={juneValue}>
+                    <lightning-accordion onsectiontoggle={handleToggleSection}>
+                        <template for:each={monthExp}  for:item="me">
+                            <c-expense-home-child key={me.Id} me={me} class="slds-size_2-of-3" onrefreshamount={handleRefreshAmount}></c-expense-home-child>
+                        </template>
+                    </lightning-accordion>
+                </template>
+                <template if:true={julyValue}>
+                    <lightning-accordion onsectiontoggle={handleToggleSection}>
+                        <template for:each={monthExp}  for:item="me">
+                            <c-expense-home-child key={me.Id} me={me} class="slds-size_2-of-3" onrefreshamount={handleRefreshAmount}></c-expense-home-child>
+                        </template>
+                    </lightning-accordion>
+                </template>
+                <template if:true={augustValue}>
+                    <lightning-accordion onsectiontoggle={handleToggleSection}>
+                        <template for:each={monthExp}  for:item="me">
+                            <c-expense-home-child key={me.Id} me={me} class="slds-size_2-of-3" onrefreshamount={handleRefreshAmount}></c-expense-home-child>
+                        </template>
+                    </lightning-accordion>
+                </template>
+                <template if:true={septemberValue}>
+                    <lightning-accordion onsectiontoggle={handleToggleSection}>
+                        <template for:each={monthExp}  for:item="me">
+                            <c-expense-home-child key={me.Id} me={me} class="slds-size_2-of-3" onrefreshamount={handleRefreshAmount}></c-expense-home-child>  
+                        </template>
+                    </lightning-accordion>
+                </template>
+                <template if:true={octoberValue}>
+                    <lightning-accordion onsectiontoggle={handleToggleSection}>
+                        <template for:each={monthExp}  for:item="me">
+                            <c-expense-home-child key={me.Id} me={me} class="slds-size_2-of-3" onrefreshamount={handleRefreshAmount}></c-expense-home-child>                     
+                        </template>
+                    </lightning-accordion>
+                </template>
+                <template if:true={novemberValue}>
+                    <lightning-accordion onsectiontoggle={handleToggleSection}>
+                        <template for:each={monthExp}  for:item="me">
+                            <c-expense-home-child key={me.Id} me={me} class="slds-size_2-of-3" onrefreshamount={handleRefreshAmount}></c-expense-home-child>                     
+                        </template>
+                    </lightning-accordion>
+                </template>
+                <template if:true={decemberValue}>
+                    <lightning-accordion onsectiontoggle={handleToggleSection}>
+                        <template for:each={monthExp}  for:item="me">
+                            <c-expense-home-child key={me.Id} me={me} class="slds-size_2-of-3" onrefreshamount={handleRefreshAmount}></c-expense-home-child>                         
+                        </template>
+                    </lightning-accordion>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</lightning-card>
+    <template if:true={income}>
+        <c-expense-home-income-button onclosemodal={handleOnCloseModalIncome} cont-id={cont}></c-expense-home-income-button>
+    </template>
+    <template if:true={newExpense}>
+        <c-expense-home-new-expense-button onclosemodal={handleOnCloseModalNewExpense} cont-id={cont}></c-expense-home-new-expense-button>
+    </template>
+</template>

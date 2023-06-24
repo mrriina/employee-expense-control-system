@@ -1,0 +1,20 @@
+<template>
+    <lightning-accordion-section label={dateME} style="width: 900px; border-bottom: 1px solid rgb(236, 234, 234)">
+        <template if:true={dateME} >    
+                <lightning-datatable
+                        key-field="Id"
+                        data={dataTableData}
+                        draft-values={draftValues}
+                        columns={columns}
+                        onrowaction={handleOnClickDelete}
+                        onsave={handleSave}
+                        show-row-number-column="true"
+                        hide-checkbox-column>
+                </lightning-datatable>
+        </template>
+        <div style="display: flex; padding-left: 5%;">
+            <div class="slds-size_1-of-3" style="font-weight: bold;">Total:</div>
+            <div class="slds-size_2-of-3" style="font-weight: bold;">{total}</div>
+        </div>
+    </lightning-accordion-section>  
+</template>
